@@ -1,4 +1,4 @@
-var ele = document.getElementById('tooltip');
+var contentPopup = document.getElementById('content_popup');
 var sel = window.getSelection();
 var rel1= document.createRange();
 rel1.selectNode(document.getElementById('cal1'));
@@ -10,14 +10,16 @@ window.addEventListener('mouseup', function () {
         var r = sel.getRangeAt(0).getBoundingClientRect();
         var rb1 = rel1.getBoundingClientRect();
         var rb2 = rel2.getBoundingClientRect();
-        ele.style.top = (r.bottom - rb2.top)*100/(rb1.top-rb2.top) + 'px'; //this will place ele below the selection
-        ele.style.left = (r.left - rb2.left)*100/(rb1.left-rb2.left) + 'px'; //this will align the right edges together
+        //contentPopup.style.top = (r.bottom - rb2.top)*100/(rb1.top-rb2.top) + 'px'; //this will place contentPopup below the selection
+        //contentPopup.style.left = (r.left - rb2.left)*100/(rb1.left-rb2.left) + 'px'; //this will align the right edges together
+		contentPopup.style.top = r.bottom + 'px'; //this will place contentPopup below the selection
+        contentPopup.style.left = r.left + 'px'; //this will align the right edges together
 
         //code to set content
 
-        ele.style.display = 'block';
+        contentPopup.style.display = 'block';
     }
 });
 window.addEventListener('mousedown', function () {
-    ele.style.display = 'none';
+    contentPopup.style.display = 'none';
 });
