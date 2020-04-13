@@ -1,13 +1,13 @@
 // Create the button
-var button = document.createElement("button");
-button.innerHTML = "Save to Google Spreadsheets";
+//var button = document.createElement("button");
+// button.innerHTML = "Save to Google Spreadsheets";
 
 // Append to header
-var header = document.querySelector('.post__header');
-header.appendChild(button);
+// var header = document.querySelector('.post__header');
+// header.appendChild(button);
 
 // Add event handler
-button.addEventListener ("click", function() {
+/*button.addEventListener ("click", function() {
   var data = {
     title: document.querySelector('.post__title').textContent,
     url: window.location.href,
@@ -15,4 +15,7 @@ button.addEventListener ("click", function() {
   chrome.runtime.sendMessage(data, function(response) {
     console.log('response', response);
   });
-});
+});*/
+
+// Popupjs test button
+
