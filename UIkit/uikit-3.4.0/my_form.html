@@ -11,27 +11,31 @@
                     </script>
                     <script src="./js/uikit-icons.min.js">
                     </script>
+                    <script src="./myCreateForm.js">
+                    </script>
                 </link>
             </meta>
         </meta>
     </head>
     <body>
         <div class="uk-container-xsmall uk-width-medium">
-            <div class="uk-margin-small uk-grid-small uk-grid" uk-grid="">
-                <div class="uk-width-expand uk-first-column">
-                    <input autofocus="" class="uk-input" type="text" placeholder="enter a sentence" value="word">
+            <button type="button" uk-close></button>
+                <div class="uk-margin-small uk-grid-small uk-grid" uk-grid="">
+                    <div class="uk-width-expand uk-first-column">
+                        <input class="uk-input" placeholder="enter a word" type="text" value="word">
+                        </input>
+                    </div>
+                    <div class="uk-width-auto">
+                        <button class="uk-button uk-button-default uk-width-1-1">
+                            Save
+                        </button>
+                    </div>
+                </div>
+                <div class="uk-margin-small">
+                    <input class="uk-input" placeholder="enter a sentence" type="text" value="sentence">
                     </input>
                 </div>
-                <div class="uk-width-auto">
-                    <button class="uk-button uk-button-default uk-width-1-1">
-                        Save
-                    </button>
-                </div>
-            </div>
-            <div class="uk-margin-small">
-                <input class="uk-input" placeholder="enter a sentence" type="text" value="sentence">
-                </input>
-            </div>
+            </hr>
         </div>
     </body>
 </html>

@@ -1,6 +1,6 @@
 
 var tooltip = document.createElement("div");
-tooltip.innerHTML = "My tooltip <div id=\"arrow\" data-popper-arrow></div>";
+tooltip.innerHTML = "<div id=\"arrow\" data-popper-arrow></div>";
 /*tooltip.innerHTML = " <div class=\"popper\">\
     adaasd hhg<div x-arrow></div>\
   </div>";*/
@@ -69,9 +69,9 @@ function updateAndShow() {
     }
 };
 window.addEventListener('mouseup', updateAndShow);
-window.addEventListener('mousedown', function () {
+/*window.addEventListener('mousedown', function () {
     hide();
-});
+});*/
 window.
 addEventListener("scroll", function () {
     if(popperInstance)
@@ -119,6 +119,16 @@ function createForm(tooltipElement) {
   var saveButton_button = document.createElement("button");
   saveButton_button.setAttribute("class", "uk-button uk-button-default uk-width-1-1"); 
   saveButton_button.innerHTML = "Save";
+
+  var close_button = document.createElement("button");
+  close_button.setAttribute("class", "uk-button uk-button-default"); 
+  close_button.setAttribute("uk-close", ""); 
+    //close_button.setAttribute("onclick", "hide();"); 
+  close_button.addEventListener('click', function () {
+    hide();
+  });
+  
+  main_container_div.appendChild(close_button);
   
   main_container_div.appendChild(wordTextbox_saveButton_div);
   main_container_div.appendChild(sentenceTextbox_div);
@@ -134,6 +144,7 @@ function createForm(tooltipElement) {
   /*
   main_container_div
   { //structure
+    close_button
     wordTextbox_saveButton_div
       wordTextbox_div
         wordTextbox_input

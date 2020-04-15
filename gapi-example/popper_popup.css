@@ -1,5 +1,5 @@
      #tooltip {
-        background: #333;
+        background: rgb(100,210,255);
         color: white;
         font-weight: bold;
         padding: 4px 8px;
@@ -23,7 +23,7 @@
       #arrow::before {
         content: '';
         transform: rotate(45deg);
-        background: #333;
+        background: rgb(100,210,255);
       }
 
       #tooltip[data-popper-placement^='top'] > #arrow {

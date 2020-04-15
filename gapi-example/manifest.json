@@ -26,7 +26,7 @@
       "js": [
         "popper.min.js", "uikit.min.js", "uikit-icons.min.js","inject.js", "popper_popup.js"
       ],
-      "css": ["popper_popup.css","uikit.min.css"],
+      "css": ["popper_popup.css","uikit.css"],
       "run_at": "document_end",
       "all_frames": true
     }

@@ -1,0 +1,1 @@
+default uikit.css interferes with standard h1,h2 headers, links etc. I have deleted first portion (upto icon component) of uikit.css file. Do not replace it with the official uikit.css.
