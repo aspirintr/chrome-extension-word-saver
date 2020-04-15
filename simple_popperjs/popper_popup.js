@@ -1,10 +1,27 @@
       const button = document.querySelector('#button');
       const tooltip = document.querySelector('#tooltip');
 
+function generateGetBoundingClientRect(x = 0, y = 0) {
+  return () => ({
+    width: 0,
+    height: 0,
+    top: y+200,
+    right: x,
+    bottom: y,
+    left: x+100,
+  });
+}
+
+
+
+const virtualElement = {
+  getBoundingClientRect: generateGetBoundingClientRect(),
+};
+
       let popperInstance = null;
 
       function create() {
-        popperInstance = Popper.createPopper(button, tooltip, {
+        popperInstance = Popper.createPopper(virtualElement, tooltip, {
           modifiers: [
             {
               name: 'offset',
@@ -43,3 +60,8 @@
       hideEvents.forEach(event => {
         button.addEventListener(event, hide);
       });
+
+      document.addEventListener('mousemove', ({ clientX: x, clientY: y }) => {
+  virtualElement.getBoundingClientRect = generateGetBoundingClientRect(x, y);
+  popperInstance.update();
+});

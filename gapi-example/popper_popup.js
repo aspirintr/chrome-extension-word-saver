@@ -1,45 +1,70 @@
-      const button = document.querySelector('#button');
-      const tooltip = document.querySelector('#tooltip');
 
-      let popperInstance = null;
+var tooltip = document.createElement("div");
+tooltip.innerHTML = "My tooltip <div id=\"arrow\" data-popper-arrow></div>";
+tooltip.id = "tooltip";
 
-      function create() {
-        popperInstance = Popper.createPopper(button, tooltip, {
-          modifiers: [
-            {
-              name: 'offset',
-              options: {
-                offset: [0, 8],
-              },
-            },
-          ],
-        });
-      }
+document.body.appendChild(tooltip);
 
-      function destroy() {
-        if (popperInstance) {
-          popperInstance.destroy();
-          popperInstance = null;
-        }
-      }
+var sel = window.getSelection();
 
-      function show() {
-        tooltip.setAttribute('data-show', '');
-        create();
-      }
+function generateGetBoundingClientRect(w = 0, h = 0, t = 0 , r = 0 , b = 0 , l = 0) {
+  return () => ({
+    width: w,
+    height: h,
+    top: t,
+    right: r,
+    bottom: b,
+    left: l,
+  });
+}
 
-      function hide() {
-        tooltip.removeAttribute('data-show');
-        destroy();
-      }
+const virtualElement = {
+  getBoundingClientRect: generateGetBoundingClientRect(),
+};
 
-      const showEvents = ['mouseenter', 'focus'];
-      const hideEvents = ['mouseleave', 'blur'];
+let popperInstance = null;
 
-      showEvents.forEach(event => {
-        button.addEventListener(event, show);
-      });
+function create() {
+  popperInstance = Popper.createPopper(virtualElement, tooltip, {
+    modifiers: [
+      {
+        name: 'offset',
+        options: {
+          offset: [0, 8],
+        },
+      },
+    ],
+  });
+};
 
-      hideEvents.forEach(event => {
-        button.addEventListener(event, hide);
-      });
+function destroy() {
+  if (popperInstance) {
+    popperInstance.destroy();
+    popperInstance = null;
+  }
+};
+
+function show() {
+  tooltip.setAttribute('data-show', '');
+  create();
+};
+
+function hide() {
+  tooltip.removeAttribute('data-show');
+  destroy();
+};
+
+window.addEventListener('mouseup', function () {
+    if (!sel.isCollapsed) {
+        debugger;
+        var r = sel.getRangeAt(0).getBoundingClientRect();
+        virtualElement.getBoundingClientRect = generateGetBoundingClientRect(
+          r.width, r.height, r.top, r.right, r.bottom, r.left);
+
+        show();
+        popperInstance.update();
+    }
+});
+window.addEventListener('mousedown', function () {
+    hide();
+});
