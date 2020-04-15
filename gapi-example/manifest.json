@@ -24,9 +24,9 @@
     {
       "matches": ["<all_urls>"],
       "js": [
-        "popper.min.js", "inject.js", "popper_popup.js"
+        "popper.min.js", "uikit.min.js", "uikit-icons.min.js","inject.js", "popper_popup.js"
       ],
-      "css": ["popper_popup.css"],
+      "css": ["popper_popup.css","uikit.min.css"],
       "run_at": "document_end",
       "all_frames": true
     }
