@@ -1,60 +1,46 @@
 <!DOCTYPE html>
 <!-- saved from url=(0045)http://jsfiddle.net/aspirintr/vdwuxr7g/3/show -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    
-    <meta http-equiv="edit-Type" edit="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Snap selection to word. - JSFiddle</title>
-
-      <meta name="robots" content="index, follow">
-      <meta name="googlebot" content="index, follow">
-
-      <script src="./select_sentence_files/highlight.pack.js"></script>
-      <script src="./select_sentence_files/embed.js"></script>
-      <link rel="stylesheet" media="screen" href="./select_sentence_files/embed-light.css">
-
-      <script type="text/javascript">
-        var height;
-        var force_height = null;
-        var slug = "vdwuxr7g";
-        var show_src = "//fiddle.jshell.net/aspirintr/vdwuxr7g/3/show/light/";
-        var resize_element_counter = 0;
-        var shell_edit_url = "/aspirintr/vdwuxr7g/3/light/";
-
-      </script>
-
-    <link rel="stylesheet" media="screen" href="./select_sentence_files/css">
-
-    <style type="text/css" media="screen">
-    </style>
-
-  </head>
-  <body>
-    <div id="wrapper">
-        <header>
-          <h1><a href="http://jsfiddle.net/aspirintr/vdwuxr7g/3/?utm_source=website&amp;utm_medium=embed&amp;utm_campaign=vdwuxr7g" target="_blank">Edit in JSFiddle</a></h1>
-          <div id="actions">
-            <ul class="normalRes">
-                <li class="&quot;active&quot;">
-                  <a data-trigger-type="result" href="http://jsfiddle.net/aspirintr/vdwuxr7g/3/show#Result">Result</a>
-                </li>
-            </ul>
-            <div class="hl" style="left: 0px; width: 57.9844px;"></div>
-          </div>
-        </header>
-
-        <div id="tabs">
-              <div class="tCont result active" id="result"><iframe src="./select_sentence_files/saved_resource.html" frameborder="0" sandbox="allow-forms allow-scripts allow-same-origin allow-modals allow-popups" allow="midi; geolocation; microphone; camera; encrypted-media; display-capture"></iframe></div>
-                <script type="text/javascript">
-                  window.addEventListener('load', function(){
-                    if (typeof(EmbedManager) === undefined){
-                        EmbedManager.loadResult();
-                    }
-                  }, false);
-                </script>
+<html>
+    <head>
+        <title>
+            Snap selection to word. - JSFiddle
+        </title>
+        <script src="./selectSentence.js">
+        </script>
+    </head>
+    <body>
+        <button onclick="javascript:snapSelectionToWord();">
+            Snap
+        </button>
+        <div contenteditable="true" onmouseup="snapSelectionToWord()">
+            <p>
+                Hello,
+                <b>
+                    her
+                </b>
+                e is some
+                <i>
+                    nice text
+                </i>
+                . Please try selecting some text.
+            </p>
+            <p>
+                <b>
+                    <u>
+                        Then, click the [Snap] button a few times just for fun.
+                    </u>
+                </b>
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nisi lorem, semper consequat consequat id, interdum vel purus. Phasellus ipsum tortor, adipiscing nec egestas sed, rhoncus sed urna. Suspendisse ultrices neque felis. Maecenas id orci ut lectus luctus lacinia quis et mauris. Ut pretium, ipsum in hendrerit consequat, mauris lorem pulvinar nulla, vel tristique lorem
+                <b>
+                    ligula eget
+                </b>
+                nisi. Proin pulvinar nibh vel felis tempor eget ornare lorem egestas. Morbi molestie viverra turpis, pulvinar tristique diam mollis non. Phasellus facilisis justo a ipsum faucibus lacinia. Quisque sit amet ultrices nulla.
+            </p>
+            <p>
+                Etiam lacinia odio in nisi porttitor dapibus. Maecenas vitae nulla purus, a eleifend est. Vivamus ut quam nibh, euismod imperdiet elit. Praesent nisl sapien, suscipit sit amet cursus vehicula, facilisis eu ligula. Nunc dapibus erat sed odio elementum non fringilla leo semper. Fusce vitae tellus sem. Nam sit amet euismod ipsum. Sed pharetra tempor pharetra. Etiam congue elit quis nisi pretium eget facilisis dolor malesuada. Etiam blandit velit eu purus semper ut malesuada eros rutrum. Morbi ullamcorper pretium metus, at pretium nisl lacinia sit amet. In pellentesque porttitor risus et sodales. In hac habitasse platea dictumst.
+            </p>
         </div>
-    </div>
-  
-
-</body><auto-scroll></auto-scroll></html>
+    </body>
+</html>

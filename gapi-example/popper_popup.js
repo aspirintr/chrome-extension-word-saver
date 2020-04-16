@@ -142,12 +142,15 @@ function hide() {
 
 function updateAndShow() {
     if (!sel.isCollapsed) {
-        var r = sel.getRangeAt(0).getBoundingClientRect();
-        virtualElement.getBoundingClientRect = generateGetBoundingClientRect(
-          r.width, r.height, r.top, r.right, r.bottom, r.left);
+      popupForm.wordTextbox_input.value = sel.toString();
 
-        show();
-        popperInstance.update();
+
+      var r = sel.getRangeAt(0).getBoundingClientRect();
+      virtualElement.getBoundingClientRect = generateGetBoundingClientRect(
+        r.width, r.height, r.top, r.right, r.bottom, r.left);
+
+      show();
+      popperInstance.update();
     }
 };
 window.addEventListener('mouseup', updateAndShow);
