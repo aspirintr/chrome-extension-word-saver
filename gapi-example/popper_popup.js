@@ -1,3 +1,84 @@
+///////////
+class PopupForm {
+  constructor(tooltipElement) {
+    this.tooltipElement = tooltipElement;
+    this.main_container_div = document.createElement("div");
+    this.main_container_div.setAttribute("class", "uk-container-xsmall uk-width-medium");
+    
+    this.wordTextbox_saveButton_div = document.createElement("div");
+    this.wordTextbox_saveButton_div.setAttribute("class", "uk-margin-small uk-grid-small uk-grid"); 
+    this.wordTextbox_saveButton_div.setAttribute("uk-grid", ""); 
+    
+    this.wordTextbox_div = document.createElement("div");
+    this.wordTextbox_div.setAttribute("class", "uk-width-expand uk-first-column"); 
+    
+    this.saveButton_div = document.createElement("div");
+    this.saveButton_div.setAttribute("class", "uk-width-auto"); 
+
+    this.sentenceTextbox_div = document.createElement("div");
+    this.sentenceTextbox_div.setAttribute("class", "uk-margin-small");
+    
+    this.wordTextbox_input = document.createElement("input");
+    //wordTextbox_input.setAttribute("autofocus", ""); 
+    this.wordTextbox_input.setAttribute("class", "uk-input"); 
+    this.wordTextbox_input.setAttribute("type", "text"); 
+    this.wordTextbox_input.setAttribute("placeholder", "enter a word"); 
+    this.wordTextbox_input.setAttribute("value", "word");  
+    
+    this.sentenceTextbox_input = document.createElement("input");
+    this.sentenceTextbox_input.setAttribute("class", "uk-input"); 
+    this.sentenceTextbox_input.setAttribute("type", "text"); 
+    this.sentenceTextbox_input.setAttribute("placeholder", "enter a sentence"); 
+    this.sentenceTextbox_input.setAttribute("value", "sentence"); 
+    
+    this.saveButton_button = document.createElement("button");
+    this.saveButton_button.setAttribute("class", "uk-button uk-button-default uk-width-1-1"); 
+    this.saveButton_button.innerHTML = "Save";
+    this.saveButton_button.addEventListener('click', function () {
+      saveToSheets();
+    });
+
+    this.close_button = document.createElement("button");
+    this.close_button.setAttribute("class", "uk-button uk-button-default"); 
+    this.close_button.setAttribute("uk-close", ""); 
+      //close_button.setAttribute("onclick", "hide();"); 
+    this.close_button.addEventListener('click', function () {
+      hide();
+    });
+    
+    this.main_container_div.appendChild(this.close_button);
+    
+    this.main_container_div.appendChild(this.wordTextbox_saveButton_div);
+    this.main_container_div.appendChild(this.sentenceTextbox_div);
+    
+    this.wordTextbox_saveButton_div.appendChild(this.wordTextbox_div);
+    this.wordTextbox_saveButton_div.appendChild(this.saveButton_div);
+    this.wordTextbox_div.appendChild(this.wordTextbox_input);
+    this.saveButton_div.appendChild(this.saveButton_button);
+    
+    this.sentenceTextbox_div.appendChild(this.sentenceTextbox_input);
+    
+    
+    /*
+    main_container_div
+    { //structure
+      close_button
+      wordTextbox_saveButton_div
+        wordTextbox_div
+          wordTextbox_input
+        saveButton_div
+          saveButton_button
+          
+      sentenceTextbox_div
+        sentenceTextbox_input
+        
+    }
+    */
+    this.tooltipElement.appendChild(this.main_container_div);
+  }
+}
+///////////
+
 
 var tooltip = document.createElement("div");
 tooltip.innerHTML = "<div id=\"arrow\" data-popper-arrow></div>";
@@ -5,7 +86,8 @@ tooltip.innerHTML = "<div id=\"arrow\" data-popper-arrow></div>";
     adaasd hhg<div x-arrow></div>\
   </div>";*/
 tooltip.id = "tooltip";
-createForm(tooltip);
+//createForm(tooltip);
+let popupForm = new PopupForm(tooltip);
 
 document.body.appendChild(tooltip);
 
@@ -83,81 +165,14 @@ addEventListener("scroll", function () {
     if(popperInstance)
       updateAndShow();
 });
+function saveToSheets(){
+  alert(popupForm.wordTextbox_input.value);
+}
 
-///////////
 
-function createForm(tooltipElement) {
-  var main_container_div = document.createElement("div");
-  main_container_div.setAttribute("class", "uk-container-xsmall uk-width-medium");
+/*function createForm(tooltipElement) {
   
-  var wordTextbox_saveButton_div = document.createElement("div");
-  wordTextbox_saveButton_div.setAttribute("class", "uk-margin-small uk-grid-small uk-grid"); 
-  wordTextbox_saveButton_div.setAttribute("uk-grid", ""); 
-  
-  var wordTextbox_div = document.createElement("div");
-  wordTextbox_div.setAttribute("class", "uk-width-expand uk-first-column"); 
-  
-  var saveButton_div = document.createElement("div");
-  saveButton_div.setAttribute("class", "uk-width-auto"); 
-
-  var sentenceTextbox_div = document.createElement("div");
-  sentenceTextbox_div.setAttribute("class", "uk-margin-small");
-  
-  var wordTextbox_input = document.createElement("input");
-  //wordTextbox_input.setAttribute("autofocus", ""); 
-  wordTextbox_input.setAttribute("class", "uk-input"); 
-  wordTextbox_input.setAttribute("type", "text"); 
-  wordTextbox_input.setAttribute("placeholder", "enter a word"); 
-  wordTextbox_input.setAttribute("value", "word");  
-  
-  var sentenceTextbox_input = document.createElement("input");
-  sentenceTextbox_input.setAttribute("class", "uk-input"); 
-  sentenceTextbox_input.setAttribute("type", "text"); 
-  sentenceTextbox_input.setAttribute("placeholder", "enter a sentence"); 
-  sentenceTextbox_input.setAttribute("value", "sentence"); 
-  
-  var saveButton_button = document.createElement("button");
-  saveButton_button.setAttribute("class", "uk-button uk-button-default uk-width-1-1"); 
-  saveButton_button.innerHTML = "Save";
-
-  var close_button = document.createElement("button");
-  close_button.setAttribute("class", "uk-button uk-button-default"); 
-  close_button.setAttribute("uk-close", ""); 
-    //close_button.setAttribute("onclick", "hide();"); 
-  close_button.addEventListener('click', function () {
-    hide();
-  });
-  
-  main_container_div.appendChild(close_button);
-  
-  main_container_div.appendChild(wordTextbox_saveButton_div);
-  main_container_div.appendChild(sentenceTextbox_div);
-  
-  wordTextbox_saveButton_div.appendChild(wordTextbox_div);
-  wordTextbox_saveButton_div.appendChild(saveButton_div);
-  wordTextbox_div.appendChild(wordTextbox_input);
-  saveButton_div.appendChild(saveButton_button);
-  
-  sentenceTextbox_div.appendChild(sentenceTextbox_input);
-  
-  
-  /*
-  main_container_div
-  { //structure
-    close_button
-    wordTextbox_saveButton_div
-      wordTextbox_div
-        wordTextbox_input
-      saveButton_div
-        saveButton_button
-        
-    sentenceTextbox_div
-      sentenceTextbox_input
-      
-  }
-  */
-  tooltipElement.appendChild(main_container_div);
-};
+};*/
 
 
 
