@@ -39,9 +39,10 @@ chrome.extension.onMessage.addListener(
       });
 
       const body = {values: [[
-        new Date(), // Timestamp
-        request.title, // Page title
+        request.date, // Timestamp
         request.url, // Page URl
+        request.word,
+        request.sentence
       ]]};
 
       // Append values

@@ -166,94 +166,14 @@ addEventListener("scroll", function () {
       updateAndShow();
 });
 function saveToSheets(){
-  alert(popupForm.wordTextbox_input.value);
+  var data = {
+    date: new Date(), // Timestamp
+    url: window.location.href,
+    word: popupForm.wordTextbox_input.value,
+    sentence: popupForm.sentenceTextbox_input.value
+  }
+  chrome.runtime.sendMessage(data, function(response) {
+    console.log('response', response);
+  });
 }
 
-
-/*function createForm(tooltipElement) {
-  
-};*/
-
-
-
-/*
-class RangeRef {
-  constructor() {
-    this.updateRect();
-
-    const update = (evt, hide) => {
-      let selection = document.getSelection();
-
-      this.range = selection && selection.rangeCount && selection.getRangeAt(0);
-
-      this.updateRect(hide);
-    };
-    document.
-    addEventListener("mouseup", update);
-
-    window.
-    addEventListener("scroll", update);
-    document.
-    scrollingElement.
-    addEventListener("scroll", update);
-  }
-
-  updateRect(hide) {
-    if (!hide && this.range) {
-      this.rect = this.range.getBoundingClientRect();
-    } else {
-      this.rect = {
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        width: 0,
-        height: 0 };
-
-    }
-
-    this.rectChangedCallback(this.rect);
-  }
-
-  rectChangedCallback() {
-    // Abstract to be implemented
-  }
-
-  getBoundingClientRect() {
-    return this.rect;
-  }
-
-  get clientWidth() {
-    return this.rect.width;
-  }
-
-  get clientHeight() {
-    return this.rect.height;
-  }}
-
-
-const pop = tooltip;//document.getElementById("pop");
-
-const rangeRef = new RangeRef();
-
-const popper = Popper.createPopper(rangeRef, pop, {
-    modifiers: [
-      {
-        name: 'offset',
-        options: {
-          offset: [0, 8],
-        },
-      },
-    ],
-  });
-
-
-rangeRef.rectChangedCallback = ({ width }) => {
-  if (width > 0) {
-    popper.update();
-    pop.firstElementChild.classList.add('popper--visible');
-  } else {
-    pop.firstElementChild.classList.remove('popper--visible');
-  }
-};
-*/
